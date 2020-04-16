@@ -60,15 +60,27 @@ module.exports = {
     const { _id } = req.body;
     const postToDelete = await Post.findOne({ _id });
 
-
     //deletar imagem do servidor
     const imageToDelete = postToDelete.post_image;
     const imgPath = path.resolve(__dirname,'..','uploads') + '/'+imageToDelete;
-
     try {
       fs.unlinkSync(imgPath)
     } catch(err) {
       console.error(err)
+    }
+
+    //apontar previous post do próximo para previous post do deletado
+    let nextPost = await Post.findOne({ _id: postToDelete.next_post })
+    if(nextPost) {
+      nextPost.previous_post = postToDelete.previous_post;
+      nextPost.save()
+    }
+
+    //apontar next post do anterior para next post do deletado
+    let previousPost = await Post.findOne({ _id : postToDelete.previous_post })
+    if(previousPost) {
+      previousPost.next_post = postToDelete.next_post;
+      previousPost.save();
     }
 
     const post = await Post.deleteOne({ _id });
@@ -77,6 +89,5 @@ module.exports = {
     } else {
       res.status(404).json({ error: 'Post not found'});
     }
-    //ao deletar, procurar documentos com next e previous apontados para ele
   }
 }
