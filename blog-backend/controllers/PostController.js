@@ -62,7 +62,7 @@ module.exports = {
 
     //deletar imagem do servidor
     const imageToDelete = postToDelete.post_image;
-    const imgPath = path.resolve(__dirname,'..','uploads') + '/'+imageToDelete;
+    const imgPath = path.resolve(__dirname,'..','uploads') + '/' + imageToDelete;
     try {
       fs.unlinkSync(imgPath)
     } catch(err) {

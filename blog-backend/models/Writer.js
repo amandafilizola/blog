@@ -10,7 +10,7 @@ const WriterSchema = new mongoose.Schema({
   }
 })
 
-PostSchema.virtual('avatar_url').get(function(){
+WriterSchema.virtual('avatar_url').get(function(){
   return `http://192.168.25.126:3333/files/avatars/${this.writer_avatar}`
 });
 
