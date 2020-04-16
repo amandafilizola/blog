@@ -8,6 +8,7 @@ module.exports = {
     const {
       name,
       email,
+      password,
     } = req.body;
 
     const writer_avatar = req.files.find(x => x.fieldname === 'writer_avatar');
@@ -15,6 +16,7 @@ module.exports = {
       writer_avatar: writer_avatar.filename,
       name,
       email,
+      password
     })
 
     if(post) {

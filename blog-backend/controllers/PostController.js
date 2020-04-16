@@ -9,7 +9,7 @@ module.exports = {
     const { writer_id } = req.headers;
 
     //get writer infos
-    let writer = await Writer.findOne({ _id: writer_id });
+    let writer = await Writer.findOne({ _id: writer_id }, { password: 0 });
     if(!writer) {
       res.status(404).json({ error: 'Could not find writer. Try to log in.'});
     }

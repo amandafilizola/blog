@@ -19,11 +19,11 @@ const PostSchema = new mongoose.Schema({
 
 
 PostSchema.virtual('avatar_url').get(function(){
-  return `http://192.168.25.126:3333/uploads/${this.writer_avatar}`
+  return `http://192.168.1.100:3333/uploads/${this.writer_avatar}`
 });
 
 PostSchema.virtual('image_url').get(function(){
-  return `http://192.168.25.126:3333/uploads/${this.post_image}`
+  return `http://192.168.1.100:3333/uploads/${this.post_image}`
 });
 
 module.exports = mongoose.model('Post', PostSchema )

@@ -4,6 +4,7 @@ const WriterSchema = new mongoose.Schema({
     writer_avatar: String,
     name: String,
     email: String,
+    password: String
   },{
   toJSON: {
     virtuals:true
