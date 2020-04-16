@@ -25,8 +25,8 @@ module.exports = {
   },
 
   async showOne(req, res) {
-    const { name, email } = req.headers;
-    const writer = await Writer.findOne({ name, email });
+    const { id } = req.params;
+    const writer = await Writer.findOne({ _id : id });
     return res.json(writer)
   },
 

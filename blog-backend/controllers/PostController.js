@@ -1,18 +1,18 @@
 const fs = require('fs')
 const Post = require('../models/Post');
+const Writer = require('../models/Writer');
 const path = require('path');
 
 module.exports = {
   async create(req, res) {
-    const {
-      headline,
-      lead,
-      name,
-      email,
-      message,
-    } = req.body
+    const { headline, lead, message } = req.body
+    const { writer_id } = req.headers;
 
-    const writer_avatar = req.files.find(x => x.fieldname === 'writer_avatar');
+    //get writer infos
+    let writer = await Writer.findOne({ _id: writer_id });
+    if(!writer) {
+      res.status(404).json({ error: 'Could not find writer. Try to log in.'});
+    }
     const post_image = req.files.find(x => x.fieldname === 'post_image');
 
     //pegar previous post
@@ -28,9 +28,9 @@ module.exports = {
     const post = await Post.create({
         headline,
         lead,
-        writer_avatar: writer_avatar.filename,
-        name,
-        email,
+        writer_avatar: writer.writer_avatar,
+        name: writer.name,
+        email: writer.email,
         date_time: Date.now(),
         post_image: post_image.filename,
         message,
@@ -53,6 +53,12 @@ module.exports = {
   async index(req, res) {
     const posts = await Post.find();
     return res.json(posts)
+  },
+
+  async showOne(req, res) {
+    const { id } = req.params;
+    const post = await Post.findOne({ _id : id });
+    return res.json(post)
   },
 
 
