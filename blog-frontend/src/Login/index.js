@@ -9,10 +9,6 @@ export default function Login() {
   const [senha, setSenha] = useState('');
   const history = useHistory();
 
-  // if(localStorage.getItem('writer_id')) {
-  //   history.push('/home');
-  // }
-
   async function handleLogin(e) {
     e.preventDefault();
     const data = {
@@ -22,7 +18,6 @@ export default function Login() {
     try {
       const response = await api.post('login', data);
       localStorage.setItem('writer_id', response.data.id);
-      console.log('redirecionar')
       history.push('/home')
     } catch(err) {
       console.log(err);

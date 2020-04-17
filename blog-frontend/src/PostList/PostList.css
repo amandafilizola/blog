@@ -4,21 +4,6 @@
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
 }
 
-.page-container header {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  height: 80px;
-  color: white;
-  background-color: #232324;
-}
-.page-container header span {
-  width: 200px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  font-size: 30px;
-}
 .list-container {
   padding: 80px 350px;
   margin: 0;
@@ -32,22 +17,57 @@
   display: flex;
   margin: 40px 0px;
   list-style-type: none;
-  background-color: grey;
   box-sizing: border-box;
+  border: 1px solid grey;
+  box-shadow: 3px 2px 5px 2px grey;
+  border-radius: 4px;
 }
+
 .list-item .img-container {
   height: 380px;
   background-size: 100% 100%;
   border: 1px solid black;
-  box-shadow: 3px 2px 5px 2px grey;
   flex: 1;
+  box-shadow: 3px 2px 5px 2px grey;
 }
+
 .list-item .texts-container {
+  display: flex;
+  flex-direction: column;
   flex: 2;
   padding: 50px;
   box-sizing: border-box;
 }
 
+.list-item .texts-container .headline {
+  color: #322787;
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+
+.list-item .texts-container .lead {
+  color: #767578;
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
 .list-item .texts-container .message {
-  max-width: 70%;
+  color: #acacad;
+  display: -webkit-box;
+  text-align: left;
+  font-size: 22px;
+  max-height: 100px;
+  /* white-space: normal; */
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6;
+}
+
+.list-item .texts-container .timestamp {
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-end;
+  color: #acacad;
 }
