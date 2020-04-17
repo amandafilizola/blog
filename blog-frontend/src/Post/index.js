@@ -42,6 +42,36 @@ export default function Post({match}) {
             {paragraphs}
           </div>
         </div>
+
+        <div className="pointers-container">
+          <div className="previous-container">
+            <span className='preview-title'style={{textAlign: 'left'}}>Previous Post</span>
+            <div className='inside-content right'>
+              <div className="img-container">
+                <div className='image'style={{ backgroundImage: `url(${post.image_url})`}}/>
+              </div>
+              <div className='preview-data'>
+                <span className='preview-headline'>Mandetta é chamado por Bolsonaro e se reúne com presidente no Planalto</span>
+                <span className='time-span'>23/04/2020 14:34</span>
+              </div>
+            </div>
+          </div>
+
+          <div style={{flex: 0.3}}/>
+
+          <div className="next-container">
+            <span className='preview-title' style={{textAlign: 'right'}}>Next Post</span>
+              <div className='inside-content left'>
+                <div className="img-container">
+                  <div className='image'style={{ backgroundImage: `url(${post.image_url})`}}/>
+                </div>
+                <div className='preview-data'>
+                  <span className='preview-headline'>Mandetta é chamado por Bolsonaro e se reúne com presidente no Planalto</span>
+                  <span className='time-span'>23/04/2020 14:34</span>
+                </div>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   )
