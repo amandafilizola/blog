@@ -57,6 +57,8 @@ module.exports = {
 
   async showOne(req, res) {
     const { id } = req.params;
+    if( id === undefined || id === null)
+      return res.status(400).json(null);
     const post = await Post.findOne({ _id : id });
     return res.json(post)
   },

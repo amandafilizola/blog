@@ -152,6 +152,12 @@
   color:#322787;
   transition: font-size 0.2s;
   font-size: 1.15em;
+  max-height: 90px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
 }
 
 .preview-title {

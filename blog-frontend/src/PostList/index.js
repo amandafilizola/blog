@@ -13,11 +13,13 @@ export default function Login() {
   useEffect( () => {
     async function fetchData() {
       const response = await api.get('posts')
-      if(response)
-        setPosts(response.data)
+      if(response){
+        let sortedPosts = response.data.sort((a,b) => { return new Date(b.date_time) - new Date(a.date_time)})
+        console.log(sortedPosts[0])
+        setPosts(sortedPosts)
+      }
     }
     fetchData();
-
   },[])
 
 
